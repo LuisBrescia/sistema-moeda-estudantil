@@ -1,0 +1,88 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.8.1">
+  <diagram name="Page-1" id="uSXAbDZ-mmpfWoyT5x_p">
+    <mxGraphModel dx="1202" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-18" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-4" target="NIZaDIb_EJNQrK9IM2gg-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-22" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-4" target="NIZaDIb_EJNQrK9IM2gg-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-25" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-4" target="NIZaDIb_EJNQrK9IM2gg-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-26" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-4" target="NIZaDIb_EJNQrK9IM2gg-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-28" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-4" target="NIZaDIb_EJNQrK9IM2gg-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-4" value="Estudante" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="150" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-19" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-5" target="NIZaDIb_EJNQrK9IM2gg-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-24" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-5" target="NIZaDIb_EJNQrK9IM2gg-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-31" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-5" target="NIZaDIb_EJNQrK9IM2gg-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-5" value="Professor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="670" y="270" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-20" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-6" target="NIZaDIb_EJNQrK9IM2gg-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-21" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-6" target="NIZaDIb_EJNQrK9IM2gg-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-29" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-6" target="NIZaDIb_EJNQrK9IM2gg-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-30" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-6" target="NIZaDIb_EJNQrK9IM2gg-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-32" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-6" target="NIZaDIb_EJNQrK9IM2gg-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-6" value="Empresa Parceira" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="110" y="430" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-9" value="Registrar-se" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="410" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-10" value="Autenticar-se" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="260" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-11" value="Consultar Extrato" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="150" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-12" value="Receber Moedas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="10" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-13" value="Trocar Moedas por Vantagens" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="305" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-14" value="Receber Notificação por Email" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="50" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-15" value="Receber Saldo Semestral" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="370" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-16" value="Cadastrar Vantagens" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="540" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-17" value="Receber Notificação de Resgate" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="500" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NIZaDIb_EJNQrK9IM2gg-23" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.006;entryY=0.379;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="NIZaDIb_EJNQrK9IM2gg-4" target="NIZaDIb_EJNQrK9IM2gg-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,9 +1,6 @@
 # Diagrama de componentes
 
 ```mermaid
----
-title: Diagrama de Componentes do Sistema de Mérito Estudantil
----
 flowchart TD
     %% Definição dos componentes
     UI["Interface do Usuário"]

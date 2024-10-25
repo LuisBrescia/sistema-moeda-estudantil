@@ -1,10 +1,5 @@
 # Diagrama de classes
 
-class EnvioMoedas {
-}
-class ResgateVantagem {
-}
-
 ```mermaid
 classDiagram
 
@@ -63,6 +58,19 @@ class Transacao {
     -mensagem : String
     -codigo : String
     +enviarNotificacao() : void
+}
+
+class EnvioMoedas {
+    -remetente : Professor
+    -destinatario : Aluno
+    +confirmarRecebimento() : void
+}
+
+class ResgateVantagem {
+    -solicitante : Aluno
+    -parceiro : EmpresaParceira
+    -vantagem : Vantagem
+    +confirmarRecebimento() : void
 }
 
     Usuario <|-- Aluno
