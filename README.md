@@ -14,3 +14,5 @@ Referente aos labs 3, 4 e 5 de Desenvolvimento de sistemas
 - [Histórias de usuário](docs/historias_de_usuario.md)
 - [Diagrama de classes](docs/diagrama_classes.md)
 - [Diagrama de componentes](docs/diagrama_componentes.md)
+- [Diagrama de sequência](docs/diagrama_sequencia.md)
+- [Diagrama Entidade-Relacionamento](docs/diagrama_er.md)

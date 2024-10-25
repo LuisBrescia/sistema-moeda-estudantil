@@ -1,4 +1,4 @@
-# Diagrama Entidade Relacional
+# Diagrama Entidade-Relacionamento
 
 ```mermaid
 erDiagram
