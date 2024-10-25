@@ -60,9 +60,9 @@ Para cada entidade definida no diagrama entidade-relacionamento, foi criado um m
 
 Utilizamos a herança para que `Aluno`, `Professor` e `EmpresaParceira` estendam a classe `Usuario`. O Eloquent suporta herança através do uso de **Model Inheritance** e **Traits**.
 
-## definição de relacionamentos
+## Definição de relacionamentos
 
-os relacionamentos entre os modelos foram definidos conforme o diagrama er:
+Os relacionamentos entre os modelos foram definidos conforme o diagrama er:
 
 **Usuário e conta**
 
