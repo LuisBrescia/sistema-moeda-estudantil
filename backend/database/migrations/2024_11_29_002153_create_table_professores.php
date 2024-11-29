@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('cpf')->unique();
             $table->text('descricao')->nullable();
             $table->string('senha');
+            $table->decimal('saldo', 10, 2)->default(0);
+            $table->timestamp('ultima_vez_resgatado')->nullable()->after('saldo');
             $table->rememberToken();
             $table->timestamps();
         });

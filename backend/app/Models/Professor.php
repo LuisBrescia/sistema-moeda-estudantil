@@ -18,6 +18,7 @@ class Professor extends Model
         'departamento_id',
         'saldo',
         'senha',
+        'ultima_vez_resgatado'
     ];
 
     protected $hidden = [
@@ -29,11 +30,22 @@ class Professor extends Model
     {
         return [
             'senha' => 'hashed',
+            'ultima_vez_resgatado' => 'datetime',
         ];
     }
 
     public function transacoesEnviadas()
     {
         return $this->hasMany(Transacao::class, 'professor_id');
+    }
+
+    public function canRedeem()
+    {
+        if (is_null($this->ultima_vez_resgatado)) {
+            return true;
+        }
+
+        $nextRedeemTime = $this->ultima_vez_resgatado->copy()->addMinutes(5);
+        return now()->greaterThanOrEqualTo($nextRedeemTime);
     }
 }

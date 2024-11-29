@@ -19,6 +19,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('professores', ProfessorController::class);
     Route::apiResource('empresas', EmpresaController::class);
     Route::apiResource('transacoes', TransacaoController::class);
+
+    Route::get('professor/resgatar', [ProfessorController::class, 'resgatar']);
 });
 
 Route::get('/example', function () {
