@@ -17,10 +17,10 @@ class InstituicaoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'nome' => $this->franquia_id,
-            'categoria' => $this->nome_fantasia,
-            'descricao' => $this->cidade,
-            'logo' => $this->logradouro,
+            'nome' => $this->nome,
+            'categoria' => $this->categoria,
+            'descricao' => $this->descricao,
+            'logo' => $this->logo,
             'departamentos' => DepartamentoResource::collection($this->whenLoaded('departamentos')),
         ];
     }

@@ -1,0 +1,66 @@
+/* importar montserrat do google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+html.dark {
+  background-color: var(--p-surface-950);
+}
+
+.bg-img-grupo {
+  position: relative;
+}
+
+.bg-img-grupo::before {
+  content: '';
+  background-image: url('/grupo.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(250px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.bg-img-dotted {
+  background-image: url(https://d2n6cmh8j179w8.cloudfront.net/07420543-71fe-4d44-bd91-c29072b1f002/build/assets/dots-6b14a7af.svg);
+}
+
+.bg-img-aura {
+  background-image: url(https://fqjltiegiezfetthbags.supabase.co/storage/v1/render/image/public/block.images/blocks/signin/signin-2.jpg);
+  @apply bg-cover bg-center;
+}
+
+.rounded-custom {
+  border-radius: 0.25rem;
+}
+
+.card-base {
+  @apply border border-surface-200 bg-surface-50 bg-opacity-75 dark:border-surface-700 dark:bg-surface-900 dark:bg-opacity-75;
+}
+
+.card-background {
+  @apply border border-surface-200 bg-surface-0 bg-opacity-75 dark:border-surface-700 dark:bg-surface-950 dark:bg-opacity-75;
+}
+
+.text-xxs {
+  font-size: 0.625rem;
+  line-height: 1rem;
+}
+
+.interativo {
+  @apply hover:bg-surface-50 active:bg-surface-100 dark:hover:bg-surface-800 active:dark:bg-surface-700;
+}
+
+pre {
+  @apply mx-auto mt-4 w-fit border bg-surface-100 p-2 dark:bg-surface-900;
+}

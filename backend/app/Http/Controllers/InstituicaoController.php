@@ -120,6 +120,7 @@ class InstituicaoController extends Controller
         $perPage = $request->get('per_page', 10);
         $perPage = is_numeric($perPage) && $perPage > 0 ? (int)$perPage : 10;
 
+        // $instituicoes = Instituicao::with('departamentos')->paginate($perPage);
         $instituicoes = Instituicao::with('departamentos')->paginate($perPage);
 
         return new InstituicaoCollection($instituicoes);

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class Aluno extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
 
     protected $table = 'alunos';
 
@@ -19,8 +20,8 @@ class Aluno extends Model
         'endereco',
         'instituicao_id',
         'departamento_id',
-        'saldo',
         'senha',
+        'saldo',
     ];
 
     protected $hidden = [

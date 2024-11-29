@@ -16,14 +16,17 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validated = $request->validate([
-            'nome' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'cpf' => 'required|string|max:11',
-            'rg' => 'required|string|max:9',
-            'endereco' => 'required|string|max:255',
-            'instituicao_id' => 'required|integer',
+            'nome'            => 'required|string|max:255',
+            'email'           => 'required|email|unique:users',
+            'cpf'             => 'required|string|max:14', // Adjusted max length to 14
+            'rg'              => 'required|string|max:12', // Adjusted max length to 12
+            'endereco'        => 'required|string|max:255',
+            'telefone'        => 'required|string|max:20', // Added validation for 'telefone'
+            'cidade'          => 'required|string|max:255', // Added validation for 'cidade'
+            'logradouro'      => 'required|string|max:255', // Added validation for 'logradouro'
+            'instituicao_id'  => 'required|integer',
             'departamento_id' => 'required|integer',
-            'senha' => 'required|string|min:8',
+            'senha'           => 'required|string|min:5', // Adjusted min length to 5
         ]);
 
         $aluno = Aluno::create([
@@ -63,7 +66,38 @@ class AuthController extends Controller
 
         $token = $aluno->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['token' => $token]);
+        $alunoData = [
+            'user' => $aluno,
+            'access_token' => $token
+        ];
+
+        return response()->json($alunoData, 201);
+    }
+
+    public function loginProfessor(Request $request)
+    {
+        $request->validate([
+            'cpf' => 'required',
+            'senha' => 'required',
+        ]);
+
+        $vanitize_cpf = preg_replace("/[^0-9]/", "", $request->cpf);
+        $professor = Professor::where('cpf', $vanitize_cpf)->first();
+
+        if (!$professor || !Hash::check($request->senha, $professor->senha)) {
+            throw ValidationException::withMessages([
+                'cpf' => ['As credenciais estão incorretas.'],
+            ]);
+        }
+
+        $token = $professor->createToken('auth_token')->plainTextToken;
+
+        $professorData = [
+            'user' => $professor,
+            'access_token' => $token
+        ];
+
+        return response()->json($professorData, 201);
     }
 
     public function logout(Request $request)

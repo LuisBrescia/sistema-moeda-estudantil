@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('rg')->unique();
             $table->string('endereco');
             $table->string('senha');
+            $table->decimal('saldo', 10, 2)->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

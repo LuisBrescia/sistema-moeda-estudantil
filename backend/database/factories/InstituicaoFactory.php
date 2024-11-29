@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Instituicao;
 use App\Models\Departamento;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class InstituicaoFactory extends Factory
 {
@@ -33,31 +32,23 @@ class InstituicaoFactory extends Factory
 
     public function withDepartamentos()
     {
-        $possibleNomes = $this->departamentoNomes;
+        return $this->afterCreating(function (Instituicao $instituicao) {
+            $possibleNomes = $this->departamentoNomes;
 
-        $count = rand(4, 7);
-        $count = min($count, count($possibleNomes));
+            $count = rand(4, 7);
+            $count = min($count, count($possibleNomes));
 
-        shuffle($possibleNomes);
-        $selectedNomes = array_slice($possibleNomes, 0, $count);
+            shuffle($possibleNomes);
+            $selectedNomes = array_slice($possibleNomes, 0, $count);
 
-        $nomeSequence = array_map(function ($nome) {
-            return ['nome' => $nome];
-        }, $selectedNomes);
-
-        return $this->has(
-            Departamento::factory()
-                ->count($count)
-                ->withProfessores()
-                ->state(new Sequence(...$nomeSequence)),
-            'departamentos' // Name of the relation in the Instituicao model
-        );
-
-        return $this->has(
-            Departamento::factory()
-                ->count(rand(4, 7))
-                ->withProfessores(),
-            'departamentos' // Nome da relação no modelo Instituicao
-        );
+            foreach ($selectedNomes as $nome) {
+                Departamento::factory()
+                    ->withProfessores()
+                    ->create([
+                        'instituicao_id' => $instituicao->id,
+                        'nome'           => $nome,
+                    ]);
+            }
+        });
     }
 }
