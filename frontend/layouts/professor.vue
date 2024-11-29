@@ -3,7 +3,7 @@
     <TheSidebarProfessor />
     <Toast position="bottom-left" />
     <main class="flex flex-1 flex-col bg-surface-100 dark:bg-surface-800">
-      <TheTopbar />
+      <TheTopbarProfessor />
       <slot />
     </main>
   </div>

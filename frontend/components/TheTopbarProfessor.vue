@@ -12,7 +12,7 @@ const dialogConfiguracoes = ref(false);
 
 const handleLogout = async () => {
   await usuarioStore.logout();
-  navigateTo('/login');
+  navigateTo('/professor/login');
 };
 
 const dialogConfirmarSaida = ref(false);

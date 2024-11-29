@@ -25,16 +25,18 @@ breadcrumbStore.setBreadcrumb([{ name: 'Início', to: '/professor/home/' }]);
           class="flex flex-wrap items-center text-surface-700 dark:text-surface-100"
         >
           <div class="mr-8 mt-4 flex items-center">
-            <i class="pi pi-users mr-2" />
-            <span>332 Active Users</span>
+            <IconIndianRupee class="mr-2" />
+            {{
+              usuarioStore.user.saldo
+                ? usuarioStore.user.saldo.toFixed(2)
+                : '00.00'
+            }}
           </div>
           <div class="mr-8 mt-4 flex items-center">
-            <i class="pi pi-globe mr-2" />
-            <span>9402 Sessions</span>
-          </div>
-          <div class="mt-4 flex items-center">
-            <i class="pi pi-clock mr-2" />
-            <span>2.32m Avg. Duration</span>
+            <IconBuilding class="mr-2" />
+            <span>
+              {{ usuarioStore.user.departamento_id }}
+            </span>
           </div>
         </div>
       </div>

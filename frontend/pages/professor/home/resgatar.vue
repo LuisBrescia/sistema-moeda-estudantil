@@ -1,8 +1,10 @@
 <script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useBreadcrumbStore } from '@/stores/breadcrumbStore';
 import { useUsuarioStore } from '@/stores/usuarioStore';
 import { useUnidadeStore } from '@/stores/unidadeStore';
 
+// Definições de página
 definePageMeta({
   layout: 'professor',
   middleware: ['authenticated'],
@@ -11,62 +13,108 @@ definePageMeta({
 const usuarioStore = useUsuarioStore();
 const unidadeStore = useUnidadeStore();
 const breadcrumbStore = useBreadcrumbStore();
+
 breadcrumbStore.setBreadcrumb([
   { name: 'Resgatar pontos', to: '/professor/home/resgatar' },
 ]);
+
+// Variáveis reativas
+const timeRemaining = ref(0);
+const canRescue = ref(true);
+const timerInterval = ref(null);
+const message = ref('');
+
+const formattedTimeRemaining = computed(() => {
+  const totalSeconds = Math.floor(timeRemaining.value);
+  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+  const seconds = String(totalSeconds % 60).padStart(2, '0');
+  return `${minutes}:${seconds}`;
+});
+
+// Função para iniciar o timer
+const startTimer = () => {
+  if (timerInterval.value) return; // Evita múltiplos intervalos
+  timerInterval.value = setInterval(() => {
+    timeRemaining.value -= 1;
+    if (timeRemaining.value <= 0) {
+      clearInterval(timerInterval.value);
+      timerInterval.value = null;
+      canRescue.value = true;
+      timeRemaining.value = 0;
+      message.value = '';
+    }
+  }, 1000);
+};
+
+// Função para verificar o status de resgate
+const checkResgateStatus = async () => {
+  try {
+    // Faz uma requisição GET para verificar o status
+    const res = await useApiRequest('/professor/resgatar');
+    console.log(res);
+
+    if (res.tempo_restante) {
+      // Ainda não pode resgatar
+      canRescue.value = false;
+      timeRemaining.value = res.tempo_restante;
+      message.value = res.message;
+      startTimer();
+    } else {
+      // Pode resgatar
+      canRescue.value = true;
+      timeRemaining.value = 0;
+      message.value = res.message || '';
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Função para lidar com o clique no botão de resgate
+const handleRescue = async () => {
+  try {
+    // Faz uma requisição GET para realizar o resgate
+    const res = await useApiRequest('/professor/resgatar');
+    if (res.pontos) {
+      usuarioStore.updateSaldo(res.pontos);
+    }
+
+    if (res.tempo_restante) {
+      // Não pôde resgatar, inicia o timer
+      canRescue.value = false;
+      timeRemaining.value = res.tempo_restante;
+      message.value = res.message;
+      startTimer();
+    } else {
+      // Resgate realizado com sucesso
+      canRescue.value = true;
+      timeRemaining.value = 0;
+      message.value = res.message;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Lifecycle hooks
+onMounted(() => {
+  checkResgateStatus();
+});
+
+onUnmounted(() => {
+  if (timerInterval.value) {
+    clearInterval(timerInterval.value);
+  }
+});
 </script>
 
 <template>
-  <main class="p-4">
-    <div class="bg-surface-0 px-6 py-8 dark:bg-surface-950 md:px-12 lg:px-20">
-      <ul class="m-0 mb-4 flex list-none items-center p-0 font-medium">
-        <li>
-          <a
-            class="cursor-pointer leading-normal text-surface-500 no-underline dark:text-surface-300"
-          >
-            Application
-          </a>
-        </li>
-        <li class="px-2">
-          <i
-            class="pi pi-angle-right leading-normal text-surface-500 dark:text-surface-300"
-          />
-        </li>
-        <li>
-          <span class="leading-normal text-surface-900 dark:text-surface-0">
-            Analytics
-          </span>
-        </li>
-      </ul>
-      <div class="flex flex-col items-start lg:flex-row lg:justify-between">
-        <div>
-          <div
-            class="text-3xl font-medium text-surface-900 dark:text-surface-0"
-          >
-            {{ usuarioStore.user.nome }}
-          </div>
-          <div
-            class="flex flex-wrap items-center text-surface-700 dark:text-surface-100"
-          >
-            <div class="mr-8 mt-4 flex items-center">
-              <i class="pi pi-users mr-2" />
-              <span>332 Active Users</span>
-            </div>
-            <div class="mr-8 mt-4 flex items-center">
-              <i class="pi pi-globe mr-2" />
-              <span>9402 Sessions</span>
-            </div>
-            <div class="mt-4 flex items-center">
-              <i class="pi pi-clock mr-2" />
-              <span>2.32m Avg. Duration</span>
-            </div>
-          </div>
-        </div>
-        <div class="mt-4 lg:mt-0">
-          <Button label="Add" class="mr-2" outlined icon="pi pi-user-plus" />
-          <Button label="Save" icon="pi pi-check" />
-        </div>
-      </div>
+  <main class="flex items-center gap-4 p-4">
+    <Button :disabled="!canRescue" @click="handleRescue" size="small">
+      Resgatar Pontos
+    </Button>
+    <div v-if="!canRescue">
+      <p>Tempo até próximo resgate: {{ formattedTimeRemaining }}</p>
     </div>
   </main>
 </template>
