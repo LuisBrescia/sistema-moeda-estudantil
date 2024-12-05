@@ -75,8 +75,10 @@ const handleRescue = async () => {
   try {
     // Faz uma requisição GET para realizar o resgate
     const res = await useApiRequest('/professor/resgatar');
-    if (res.pontos) {
-      usuarioStore.updateSaldo(res.pontos);
+    console.log(res);
+    if (res.saldo) {
+      console.log('Atualizando saldo fora');
+      usuarioStore.updateSaldo();
     }
 
     if (res.tempo_restante) {

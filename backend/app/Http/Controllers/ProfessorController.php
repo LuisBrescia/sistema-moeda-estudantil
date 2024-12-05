@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Professor;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class ProfessorController extends Controller
@@ -51,14 +52,14 @@ class ProfessorController extends Controller
 
     public function resgatar(Request $request)
     {
-        $professor = auth()->user();
+        $professor = $request->user();
 
         if (!$professor instanceof Professor) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
         if (!$professor->canRedeem()) {
-            $nextRedeemTime = $professor->ultima_vez_resgatado->copy()->addMinutes(5);
+            $nextRedeemTime = $professor->ultima_vez_resgatado->copy()->addMinutes(1);
             $secondsLeft = now()->diffInSeconds($nextRedeemTime, false);
             $secondsLeft = max(0, $secondsLeft);
             $minutesLeft = ceil($secondsLeft / 60);

@@ -184,7 +184,7 @@ onMounted(() => {
             />
             <InputMask
               v-model="formData.rg"
-              mask="99.999.999-9"
+              mask="aa-99.999.999"
               placeholder="RG"
               fluid
               class="text-center"

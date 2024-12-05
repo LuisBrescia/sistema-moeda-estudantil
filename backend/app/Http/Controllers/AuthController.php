@@ -19,7 +19,7 @@ class AuthController extends Controller
             'nome'            => 'required|string|max:255',
             'email'           => 'required|email|unique:users',
             'cpf'             => 'required|string|max:14', // Adjusted max length to 14
-            'rg'              => 'required|string|max:12', // Adjusted max length to 12
+            'rg'              => 'required|string|max:13', // Adjusted max length to 13
             'endereco'        => 'required|string|max:255',
             'telefone'        => 'required|string|max:20', // Added validation for 'telefone'
             'cidade'          => 'required|string|max:255', // Added validation for 'cidade'

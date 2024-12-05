@@ -26,11 +26,7 @@ breadcrumbStore.setBreadcrumb([{ name: 'Info geral', to: '/home' }]);
         >
           <div class="mr-8 mt-4 flex items-center">
             <IconIndianRupee class="mr-2" />
-            {{
-              usuarioStore.user.saldo
-                ? usuarioStore.user.saldo.toFixed(2)
-                : '00.00'
-            }}
+            {{ usuarioStore.user ? usuarioStore.user.saldo : '00.00' }}
           </div>
           <div class="mr-8 mt-4 flex items-center">
             <IconBuilding class="mr-2" />

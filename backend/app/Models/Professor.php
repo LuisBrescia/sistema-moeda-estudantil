@@ -45,7 +45,7 @@ class Professor extends Model
             return true;
         }
 
-        $nextRedeemTime = $this->ultima_vez_resgatado->copy()->addMinutes(5);
+        $nextRedeemTime = $this->ultima_vez_resgatado->copy()->addMinutes(1);
         return now()->greaterThanOrEqualTo($nextRedeemTime);
     }
 }
