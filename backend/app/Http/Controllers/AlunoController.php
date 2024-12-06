@@ -83,21 +83,24 @@ class AlunoController extends Controller
             return response()->json(['message' => 'Saldo insuficiente'], 400);
         }
 
+        $aluno = Aluno::find($validated['id']);
+
         $professor->saldo -= $validated['saldo'];
         $historicoProfessor = $professor->historico ?? [];
         $historicoProfessor[] = [
             'tipo' => 'saida',
             'valor' => $validated['saldo'],
+            'origem' => $aluno->nome,
             'date' => now(),
         ];
         $professor->historico = $historicoProfessor;
 
-        $aluno = Aluno::find($validated['id']);
         $aluno->saldo += $validated['saldo'];
         $historicoAluno = $aluno->historico ?? [];
         $historicoAluno[] = [
             'tipo' => 'entrada',
             'valor' => $validated['saldo'],
+            'origem' => $professor->nome,
             'date' => now(),
         ];
         $aluno->historico = $historicoAluno;
@@ -136,9 +139,11 @@ class AlunoController extends Controller
 
         $validated = $request->validate([
             'valor' => 'required|numeric',
+            'nome' => 'required|string',
         ]);
 
         $valor = (float) $validated['valor'];
+        $produtoNome = $validated['nome'];
 
         if ($aluno->saldo < $valor) {
             return response()->json(['message' => 'Saldo insuficiente'], 400);
@@ -149,6 +154,7 @@ class AlunoController extends Controller
         $historico[] = [
             'tipo' => 'saida',
             'valor' => $valor,
+            'origem' => $produtoNome,
             'date' => now(),
         ];
 

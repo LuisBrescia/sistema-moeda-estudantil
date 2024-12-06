@@ -72,6 +72,7 @@ const comprarProduto = async (product) => {
       body: {
         product_id: product.id,
         valor: product.price,
+        nome: product.name,
       },
     });
 

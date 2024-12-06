@@ -88,7 +88,9 @@ onMounted(() => {
           </div>
           <div class="flex items-center text-rose-500 dark:text-rose-400">
             <IconBadge :size="16" />
-            <span class="ml-1 text-sm font-black">0</span>
+            <span class="ml-1 text-sm font-black">
+              {{ aluno.vantagens ?? 0 }}
+            </span>
           </div>
         </div>
         <Button

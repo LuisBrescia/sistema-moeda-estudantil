@@ -84,6 +84,11 @@ onMounted(() => {
             <IconIndianRupee :size="16" />
             <span>{{ transacao.valor }}</span>
           </span>
+          <span
+            class="flex items-center gap-1 text-base font-black text-surface-700 dark:text-surface-300"
+          >
+            <span>{{ transacao.origem ?? '' }}</span>
+          </span>
         </div>
         <span>
           {{ formatDate(transacao.date) }}
