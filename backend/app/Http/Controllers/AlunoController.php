@@ -125,4 +125,37 @@ class AlunoController extends Controller
 
         return response()->json($alunos);
     }
+
+    public function comprar(Request $request)
+    {
+        $aluno = $request->user();
+
+        if (!$aluno instanceof Aluno) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $validated = $request->validate([
+            'valor' => 'required|numeric',
+        ]);
+
+        $valor = (float) $validated['valor'];
+
+        if ($aluno->saldo < $valor) {
+            return response()->json(['message' => 'Saldo insuficiente'], 400);
+        }
+
+        $aluno->saldo -= $valor;
+        $historico = $aluno->historico ?? [];
+        $historico[] = [
+            'tipo' => 'saida',
+            'valor' => $valor,
+            'date' => now(),
+        ];
+
+        $aluno->historico = $historico;
+        $aluno->vantagens += 1;
+        $aluno->save();
+
+        return response()->json($aluno);
+    }
 }

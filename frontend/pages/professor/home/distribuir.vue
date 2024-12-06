@@ -86,7 +86,7 @@ onMounted(() => {
               {{ aluno.saldo === '0.00' ? '0' : aluno.saldo }}
             </span>
           </div>
-          <div class="flex items-center text-pink-500 dark:text-pink-400">
+          <div class="flex items-center text-rose-500 dark:text-rose-400">
             <IconBadge :size="16" />
             <span class="ml-1 text-sm font-black">0</span>
           </div>

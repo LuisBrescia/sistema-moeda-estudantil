@@ -12,7 +12,7 @@ const dialogConfiguracoes = ref(false);
 
 const handleLogout = async () => {
   await usuarioStore.logout();
-  navigateTo('/professor/login');
+  navigateTo('/login');
 };
 
 const dialogConfirmarSaida = ref(false);
@@ -49,8 +49,14 @@ const dialogConfirmarSaida = ref(false);
         <span
           class="flex items-center text-xs font-black text-green-500 dark:text-green-400"
         >
-          <IconIndianRupee :size="14" />
+          <IconIndianRupee :size="14" class="mr-1" />
           {{ usuarioStore.user.saldo }}
+        </span>
+        <span
+          class="ml-2 flex items-center text-xs font-black text-rose-500 dark:text-rose-400"
+        >
+          <IconBadge :size="14" class="mr-1" />
+          {{ usuarioStore.user.vantagens }}
         </span>
       </div>
       <IconChevronDown

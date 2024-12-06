@@ -20,6 +20,7 @@ const getMe = async () => {
   const res = await useApiRequest(`/me`);
   historico.value = res.user.historico;
   departamentoNome.value = res.departamento;
+  usuarioStore.setUsuario(res.user);
 };
 
 const formatDate = (date) => {

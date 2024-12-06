@@ -35,6 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('professor/resgatar', [ProfessorController::class, 'resgatar']);
     Route::put('aluno/adicionar_saldo', [AlunoController::class, 'adicionar']);
     Route::get('aluno/podio', [AlunoController::class, 'podio']);
+    Route::put('aluno/comprar', [AlunoController::class, 'comprar']);
 });
 
 

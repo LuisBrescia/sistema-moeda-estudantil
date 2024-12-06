@@ -23,13 +23,13 @@ class Aluno extends Model
         'senha',
         'saldo',
         'historico',
+        'vantagens',
     ];
 
     protected $hidden = [
         'senha',
         'remember_token',
     ];
-
 
     protected function casts(): array
     {

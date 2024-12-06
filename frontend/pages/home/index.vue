@@ -20,6 +20,7 @@ const getMe = async () => {
   const res = await useApiRequest(`/me`);
   historico.value = res.user.historico;
   departamentoNome.value = res.departamento;
+  usuarioStore.setUsuario(res.user);
 };
 
 const formatDate = (date) => {
@@ -47,6 +48,12 @@ onMounted(() => {
           >
             <IconIndianRupee class="mr-2" />
             {{ usuarioStore.user ? usuarioStore.user.saldo : '0' }}
+          </div>
+          <div
+            class="mr-8 mt-4 flex items-center font-bold text-rose-500 dark:text-rose-400"
+          >
+            <IconBadge class="mr-2" />
+            {{ usuarioStore.user ? usuarioStore.user.vantagens : '0' }}
           </div>
           <div class="mr-8 mt-4 flex items-center">
             <IconBuilding class="mr-2" />

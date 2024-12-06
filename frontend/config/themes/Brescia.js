@@ -70,6 +70,9 @@ const Brescia = definePreset(Aura, {
         fontSize: '1.5rem',
       },
     },
+    card: {
+      borderRadius: '0.25rem',
+    },
     dialog: {
       borderRadius: '0.25rem',
     },

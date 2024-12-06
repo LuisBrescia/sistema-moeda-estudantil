@@ -21,6 +21,7 @@ class AlunoFactory extends Factory
             'endereco'         => $this->faker->numerify('########'), // CEP sem máscara
             'instituicao_id'   => null,
             'departamento_id'  => null, // Será definido ao associar com Departamento
+            'saldo'            => $this->faker->randomFloat(2, 0, 1000),
             'senha'            => Hash::make('aluno'),
             'remember_token'   => Str::random(10),
         ];
