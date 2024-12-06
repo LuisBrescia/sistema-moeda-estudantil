@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Departamento;
 use App\Models\Professor;
+use App\Models\Aluno;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DepartamentoFactory extends Factory
@@ -16,6 +17,20 @@ class DepartamentoFactory extends Factory
             'instituicao_id' => null, // Será definido ao associar com Instituicao
             'descricao' => $this->faker->paragraph,
         ];
+    }
+
+    public function withAlunos()
+    {
+        return $this->has(
+            Aluno::factory()
+                ->count(rand(8, 16))
+                ->state(function (array $attributes, Departamento $departamento) {
+                    return [
+                        'instituicao_id' => $departamento->instituicao_id, // Copia a instituição do departamento
+                    ];
+                }),
+            'alunos' // Nome da relação no modelo Departamento
+        );
     }
 
     public function withProfessores()

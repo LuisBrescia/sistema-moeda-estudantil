@@ -50,7 +50,7 @@ const startTimer = () => {
 const checkResgateStatus = async () => {
   try {
     // Faz uma requisição GET para verificar o status
-    const res = await useApiRequest('/professor/resgatar');
+    const res = await useApiRequest('/professor/resgatar?status=true');
     console.log(res);
 
     if (res.tempo_restante) {
@@ -71,7 +71,9 @@ const checkResgateStatus = async () => {
 };
 
 // Função para lidar com o clique no botão de resgate
+const handleRescueLoading = ref(false);
 const handleRescue = async () => {
+  handleRescueLoading.value = true;
   try {
     // Faz uma requisição GET para realizar o resgate
     const res = await useApiRequest('/professor/resgatar');
@@ -82,19 +84,20 @@ const handleRescue = async () => {
     }
 
     if (res.tempo_restante) {
-      // Não pôde resgatar, inicia o timer
       canRescue.value = false;
       timeRemaining.value = res.tempo_restante;
       message.value = res.message;
       startTimer();
     } else {
-      // Resgate realizado com sucesso
       canRescue.value = true;
       timeRemaining.value = 0;
       message.value = res.message;
+      checkResgateStatus();
     }
   } catch (error) {
     console.error(error);
+  } finally {
+    handleRescueLoading.value = false;
   }
 };
 
@@ -111,12 +114,37 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <main class="flex items-center gap-4 p-4">
-    <Button :disabled="!canRescue" @click="handleRescue" size="small">
-      Resgatar Pontos
-    </Button>
-    <div v-if="!canRescue">
-      <p>Tempo até próximo resgate: {{ formattedTimeRemaining }}</p>
+  <main class="grid h-full place-items-center gap-4 p-4">
+    <div class="flex flex-col items-center justify-center">
+      <div
+        class="mb-8 text-2xl font-medium text-surface-900 dark:text-surface-100"
+      >
+        Saldo atual
+      </div>
+      <div
+        class="saldo-atual mb-8 flex items-center text-7xl font-bold text-green-500"
+      >
+        <IconIndianRupee class="saldo-atual" :size="72" />
+        {{ usuarioStore.user.saldo }}
+      </div>
+      <Button
+        :disabled="!canRescue"
+        @click="handleRescue"
+        class="mb-4"
+        :loading="handleRescueLoading"
+      >
+        Resgatar Pontos
+      </Button>
+      <div :style="{ opacity: canRescue ? 0 : 1 }" class="text-center">
+        <p>Tempo até próximo resgate: {{ formattedTimeRemaining }}</p>
+      </div>
     </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+// .saldo-atual {
+// text-shadow: 0 0 4px #22c55e;
+// filter: drop-shadow(0 0 2px #22c55e);
+// }
+</style>

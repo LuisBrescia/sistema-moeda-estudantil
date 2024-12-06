@@ -44,6 +44,7 @@ class InstituicaoFactory extends Factory
             foreach ($selectedNomes as $nome) {
                 Departamento::factory()
                     ->withProfessores()
+                    ->withAlunos()
                     ->create([
                         'instituicao_id' => $instituicao->id,
                         'nome'           => $nome,

@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Departamento;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Aluno::all();
+        $departamento_id = $request->user()->departamento_id;
+        $departamento = Departamento::find($departamento_id);
+
+        return response()->json($departamento->alunos);
     }
 
     public function store(Request $request)
@@ -24,6 +28,7 @@ class AlunoController extends Controller
             'curso' => 'required|string',
         ]);
 
+        $validated['rg'] = strtoupper($validated['rg']);
         $aluno = Aluno::create($validated);
 
         return response()->json($aluno, 201);

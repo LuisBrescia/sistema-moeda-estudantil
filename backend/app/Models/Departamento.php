@@ -28,4 +28,9 @@ class Departamento extends Model
     {
         return $this->hasMany(Professor::class);
     }
+
+    public function alunos(): HasMany
+    {
+        return $this->hasMany(Aluno::class);
+    }
 }

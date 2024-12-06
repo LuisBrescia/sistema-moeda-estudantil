@@ -58,18 +58,27 @@ class ProfessorController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        if (!$professor->canRedeem()) {
-            $nextRedeemTime = $professor->ultima_vez_resgatado->copy()->addMinutes(1);
-            $secondsLeft = now()->diffInSeconds($nextRedeemTime, false);
-            $secondsLeft = max(0, $secondsLeft);
-            $minutesLeft = ceil($secondsLeft / 60);
+        $ultimaVezResgatado = $professor->ultima_vez_resgatado ?? now()->subMinutes(1);
+        $nextRedeemTime = $ultimaVezResgatado->copy()->addMinutes(1);
+        $secondsLeft = now()->diffInSeconds($nextRedeemTime, false);
+        $isAvailable = $secondsLeft <= 0;
+
+        if ($request->query('status') === 'true') {
+            // Apenas retorna o status sem alterar saldo ou tempo
+            return response()->json([
+                'disponivel' => $isAvailable,
+                'tempo_restante' => $isAvailable ? 0 : max(0, $secondsLeft),
+            ], 200);
+        }
+
+        if (!$isAvailable) {
+            $minutesLeft = ceil(max(0, $secondsLeft) / 60);
 
             return response()->json([
                 'message' => "Você precisa esperar $minutesLeft minuto(s) antes de resgatar novamente.",
                 'tempo_restante' => $secondsLeft,
             ], 200);
         }
-
         // Perform the redeem action
         $amount = 1000; // Adjust the amount as needed
         $professor->saldo += $amount;

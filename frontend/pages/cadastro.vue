@@ -187,7 +187,7 @@ onMounted(() => {
               mask="aa-99.999.999"
               placeholder="RG"
               fluid
-              class="text-center"
+              class="text-center uppercase"
             />
 
             <p class="mb-8 text-xs">
