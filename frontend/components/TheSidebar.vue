@@ -1,5 +1,5 @@
 <script setup>
-import { User, Medal, Gem } from 'lucide-vue-next';
+import { User, Medal, Gem, Package } from 'lucide-vue-next';
 import { useViewWrapperStore } from '@/stores/viewWrapperStore';
 
 const route = useRoute();
@@ -35,6 +35,11 @@ const itemsSidebar = [
       label: 'Vantagens',
       to: '/home/vantagens',
     },
+    {
+      icon: Package,
+      label: 'Loja',
+      to: '/home/loja',
+    },
   ],
   [],
 ];
@@ -45,7 +50,7 @@ const itemsSidebar = [
     <div class="c-sidebar__header">
       <h2 class="c-sidebar__header__branding">
         <IconReceiptJapaneseYen class="text-primary-500" :size="20" />
-        <span class="text-base">Syscoin</span>
+        <span class="text-base">AraVault</span>
       </h2>
 
       <div class="c-sidebar__header__panel-switch">

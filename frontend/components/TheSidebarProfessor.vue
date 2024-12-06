@@ -45,7 +45,7 @@ const itemsSidebar = [
     <div class="c-sidebar__header">
       <h2 class="c-sidebar__header__branding">
         <IconReceiptJapaneseYen class="text-primary-500" :size="20" />
-        <span class="text-base">Syscoin</span>
+        <span class="text-base">AraVault</span>
       </h2>
 
       <div class="c-sidebar__header__panel-switch">

@@ -28,7 +28,7 @@ const dialogConfirmarSaida = ref(false);
       class="rounded-custom flex cursor-pointer items-center p-2 dark:bg-surface-800"
     >
       <IconSearch :size="12" />
-      <span class="ml-2 text-xs text-surface-500">Pesquisar Syscoin</span>
+      <span class="ml-2 text-xs text-surface-500">Pesquisar AraVault</span>
     </div> -->
 
     <Button
