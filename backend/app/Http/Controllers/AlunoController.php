@@ -105,6 +105,8 @@ class AlunoController extends Controller
         $professor->save();
         $aluno->save();
 
+        // > @VictorReisCarlota: Ação de enviar por email
+
         return response()->json($aluno);
     }
 

@@ -8,6 +8,8 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TransacaoController;
 use App\Http\Controllers\AuthController;
 
+use App\Models\Departamento;
+
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('login/professor', [AuthController::class, 'loginProfessor']);
@@ -22,7 +24,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('transacoes', TransacaoController::class);
 
     Route::get('/me', function (Request $request) {
-        return $request->user();
+        $departamento = Departamento::findOrFail($request->user()->departamento_id)->nome;
+
+        return response()->json([
+            'user' => $request->user(),
+            'departamento' => $departamento
+        ]);
     });
 
     Route::get('professor/resgatar', [ProfessorController::class, 'resgatar']);

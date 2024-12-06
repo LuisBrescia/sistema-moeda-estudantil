@@ -14,10 +14,12 @@ const breadcrumbStore = useBreadcrumbStore();
 breadcrumbStore.setBreadcrumb([{ name: 'Início', to: '/professor/home/' }]);
 
 const historico = ref([]);
+const departamentoNome = ref('');
 
 const getMe = async () => {
   const res = await useApiRequest(`/me`);
-  historico.value = res.historico;
+  historico.value = res.user.historico;
+  departamentoNome.value = res.departamento;
 };
 
 const formatDate = (date) => {
@@ -48,9 +50,7 @@ onMounted(() => {
           </div>
           <div class="mr-8 mt-4 flex items-center">
             <IconBuilding class="mr-2" />
-            <span>
-              {{ usuarioStore.user.departamento_id }}
-            </span>
+            <span>Cursando {{ departamentoNome }}</span>
           </div>
         </div>
       </div>
