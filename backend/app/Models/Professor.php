@@ -18,7 +18,8 @@ class Professor extends Model
         'departamento_id',
         'saldo',
         'senha',
-        'ultima_vez_resgatado'
+        'ultima_vez_resgatado',
+        'historico',
     ];
 
     protected $hidden = [
@@ -31,6 +32,7 @@ class Professor extends Model
         return [
             'senha' => 'hashed',
             'ultima_vez_resgatado' => 'datetime',
+            'historico' => 'array',
         ];
     }
 

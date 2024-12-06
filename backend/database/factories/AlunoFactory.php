@@ -14,7 +14,7 @@ class AlunoFactory extends Factory
     public function definition()
     {
         return [
-            'nome'             => $this->faker->name(),
+            'nome'             => Str::limit($this->faker->name(), 20, ''),
             'email'            => $this->faker->unique()->safeEmail(),
             'cpf'              => $this->faker->unique()->numerify('###########'), // CPF sem máscara
             'rg'               => $this->faker->unique()->numerify('#########'), // RG sem máscara

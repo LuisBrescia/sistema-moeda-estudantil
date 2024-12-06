@@ -22,11 +22,13 @@ class Aluno extends Model
         'departamento_id',
         'senha',
         'saldo',
+        'historico',
     ];
 
     protected $hidden = [
         'senha',
         'remember_token',
+        'historico',
     ];
 
 

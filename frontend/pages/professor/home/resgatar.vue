@@ -122,7 +122,7 @@ onUnmounted(() => {
         Saldo atual
       </div>
       <div
-        class="saldo-atual mb-8 flex items-center text-7xl font-bold text-green-500"
+        class="saldo-atual mb-8 flex items-center text-7xl font-bold text-green-500 dark:text-green-400"
       >
         <IconIndianRupee class="saldo-atual" :size="72" />
         {{ usuarioStore.user.saldo }}

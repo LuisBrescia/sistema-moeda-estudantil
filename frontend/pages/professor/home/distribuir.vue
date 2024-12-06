@@ -45,11 +45,13 @@ onMounted(() => {
           {{ aluno.nome }}
         </div>
         <div class="mb-4 flex items-center gap-6">
-          <div class="flex items-center text-green-500">
+          <div class="flex items-center text-green-500 dark:text-green-400">
             <IconIndianRupee :size="16" />
-            <span class="ml-1 text-sm font-black">{{ aluno.saldo }}</span>
+            <span class="ml-1 text-sm font-black">
+              {{ aluno.saldo === '0.00' ? '0' : aluno.saldo }}
+            </span>
           </div>
-          <div class="flex items-center text-pink-500">
+          <div class="flex items-center text-pink-500 dark:text-pink-400">
             <IconBadge :size="16" />
             <span class="ml-1 text-sm font-black">0</span>
           </div>

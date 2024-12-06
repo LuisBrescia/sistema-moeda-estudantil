@@ -81,9 +81,18 @@ const dialogConfirmarSaida = ref(false);
       <div
         class="interativo flex cursor-pointer items-center justify-between px-6 py-3 text-xs"
       >
-        <div class="flex items-center">
-          <IconCircleUserRound :size="16" />
-          <span class="ml-4">Meu perfil</span>
+        <div class="flex w-full items-center justify-between">
+          <span class="flex items-center">
+            <IconCircleUserRound :size="16" />
+            <span class="ml-4">Meu perfil</span>
+          </span>
+
+          <span
+            class="flex items-center gap-1 text-xs font-black text-green-500 dark:text-green-400"
+          >
+            <IconIndianRupee :size="14" />
+            {{ usuarioStore.user.saldo }}
+          </span>
         </div>
       </div>
 

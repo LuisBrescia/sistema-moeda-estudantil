@@ -83,6 +83,14 @@ class ProfessorController extends Controller
         $amount = 1000; // Adjust the amount as needed
         $professor->saldo += $amount;
         $professor->ultima_vez_resgatado = now();
+        $historico = $professor->historico ?? [];
+        $historico[] = [
+            'tipo' => 'entrada',
+            'date' => now(),
+            'valor' => $amount,
+        ];
+        $professor->historico = $historico;
+
         $professor->save();
 
         return response()->json([

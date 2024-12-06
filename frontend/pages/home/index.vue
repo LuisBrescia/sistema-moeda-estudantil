@@ -12,6 +12,15 @@ const usuarioStore = useUsuarioStore();
 const unidadeStore = useUnidadeStore();
 const breadcrumbStore = useBreadcrumbStore();
 breadcrumbStore.setBreadcrumb([{ name: 'Info geral', to: '/home' }]);
+
+const getMe = async () => {
+  const res = await useApiRequest(`/me`);
+  console.log(res);
+};
+
+onMounted(() => {
+  getMe();
+});
 </script>
 
 <template>
@@ -26,7 +35,7 @@ breadcrumbStore.setBreadcrumb([{ name: 'Info geral', to: '/home' }]);
         >
           <div class="mr-8 mt-4 flex items-center">
             <IconIndianRupee class="mr-2" />
-            {{ usuarioStore.user ? usuarioStore.user.saldo : '00.00' }}
+            {{ usuarioStore.user ? usuarioStore.user.saldo : '0' }}
           </div>
           <div class="mr-8 mt-4 flex items-center">
             <IconBuilding class="mr-2" />

@@ -12,6 +12,23 @@ const usuarioStore = useUsuarioStore();
 const unidadeStore = useUnidadeStore();
 const breadcrumbStore = useBreadcrumbStore();
 breadcrumbStore.setBreadcrumb([{ name: 'Início', to: '/professor/home/' }]);
+
+const historico = ref([]);
+
+const getMe = async () => {
+  const res = await useApiRequest(`/me`);
+  historico.value = res.historico;
+};
+
+// formatar 2024-12-06T17:48:26.850701Z para 06/12/2024 às 17:48
+const formatDate = (date) => {
+  const d = new Date(date);
+  return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()} às ${d.getHours()}:${d.getMinutes()}`;
+};
+
+onMounted(() => {
+  getMe();
+});
 </script>
 
 <template>
@@ -24,9 +41,11 @@ breadcrumbStore.setBreadcrumb([{ name: 'Início', to: '/professor/home/' }]);
         <div
           class="flex flex-wrap items-center text-surface-700 dark:text-surface-100"
         >
-          <div class="mr-8 mt-4 flex items-center">
+          <div
+            class="mr-8 mt-4 flex items-center font-bold text-green-500 dark:text-green-400"
+          >
             <IconIndianRupee class="mr-2" />
-            {{ usuarioStore.user ? usuarioStore.user.saldo : '00.00' }}
+            {{ usuarioStore.user ? usuarioStore.user.saldo : '0' }}
           </div>
           <div class="mr-8 mt-4 flex items-center">
             <IconBuilding class="mr-2" />
@@ -36,9 +55,47 @@ breadcrumbStore.setBreadcrumb([{ name: 'Início', to: '/professor/home/' }]);
           </div>
         </div>
       </div>
-      <div class="mt-4 lg:mt-0">
-        <Button label="Add" class="mr-2" outlined icon="pi pi-user-plus" />
-        <Button label="Save" icon="pi pi-check" />
+    </div>
+
+    <div
+      class="mb-8 mt-16 text-2xl font-semibold text-surface-700 dark:text-surface-300"
+    >
+      Histórico de transação
+    </div>
+
+    <div v-if="historico.length">
+      <div
+        v-for="transacao in historico"
+        :key="transacao.id"
+        class="mb-2 flex justify-between rounded border border-surface-300 bg-surface-0 p-4 dark:border-surface-700 dark:bg-surface-900"
+      >
+        <div class="flex items-center gap-4">
+          <IconTrendingUp
+            v-if="transacao.tipo === 'entrada'"
+            class="text-green-500"
+          />
+          <IconTrendingDown
+            v-else-if="transacao.tipo === 'saida'"
+            class="text-red-500"
+          />
+          <span
+            class="flex items-center gap-1 text-base font-black text-green-500 dark:text-green-400"
+          >
+            <IconIndianRupee :size="16" />
+            <span>{{ transacao.valor }}</span>
+          </span>
+        </div>
+        <span>
+          {{ formatDate(transacao.date) }}
+        </span>
+      </div>
+    </div>
+
+    <div v-else>
+      <div
+        class="rounded border border-surface-300 bg-surface-100 p-4 text-center text-surface-700 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-300"
+      >
+        Nenhuma transação encontrada
       </div>
     </div>
   </div>

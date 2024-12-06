@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ProfessorController;
@@ -19,6 +20,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('professores', ProfessorController::class);
     Route::apiResource('empresas', EmpresaController::class);
     Route::apiResource('transacoes', TransacaoController::class);
+
+    Route::get('/me', function (Request $request) {
+        return $request->user();
+    });
 
     Route::get('professor/resgatar', [ProfessorController::class, 'resgatar']);
 });
