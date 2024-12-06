@@ -1,12 +1,26 @@
 <script setup>
+import { useUsuarioStore } from '@/stores/usuarioStore';
+import { useToast } from 'primevue/usetoast';
+
 definePageMeta({
   layout: 'professor',
   middleware: ['authenticated'],
 });
 
+const usuarioStore = useUsuarioStore();
+const formData = ref({
+  valor: '',
+});
 const alunosData = ref([]);
-const modalEdicaoAluno = ref(false);
+const alunoSelecionado = ref({
+  nome: '',
+  email: '',
+  senha: '',
+  saldo: '',
+  id: '',
+});
 
+const modalEdicaoAluno = ref(false);
 const getAlunos = async () => {
   const res = await useApiRequest('/alunos');
   alunosData.value = res;
@@ -14,7 +28,28 @@ const getAlunos = async () => {
 };
 
 const handleExibirAluno = (aluno) => {
-  console.log(aluno);
+  alunoSelecionado.value = { ...aluno };
+  modalEdicaoAluno.value = true;
+};
+
+const handleEnviarSaldo = async () => {
+  const res = await useApiRequest('/aluno/adicionar_saldo', {
+    method: 'PUT',
+    body: {
+      id: alunoSelecionado.value.id,
+      saldo: formData.value.valor,
+    },
+  });
+  getAlunos();
+  usuarioStore.setSaldo(usuarioStore.user.saldo - formData.value.valor);
+  modalEdicaoAluno.value = false;
+  formData.value.valor = '';
+  toast.add({
+    severity: 'success',
+    summary: 'Aviso',
+    detail: 'Pontos enviados com sucesso.',
+    life: 3000,
+  });
 };
 
 onMounted(() => {
@@ -57,7 +92,7 @@ onMounted(() => {
           </div>
         </div>
         <Button
-          label="Exibir aluno"
+          label="Enviar pontos"
           outlined
           size="small"
           class="mb-8"
@@ -66,22 +101,29 @@ onMounted(() => {
       </div>
     </div>
 
-    <Modal
-      v-model="modalEdicaoAluno"
-      title="Editar aluno"
-      size="lg"
-      :footer="[
-        {
-          label: 'Cancelar',
-          outlined: true,
-          onClick: () => (modalEdicaoAluno = false),
-        },
-        {
-          label: 'Salvar',
-          onClick: () => (modalEdicaoAluno = false),
-        },
-      ]"
-    ></Modal>
+    <Dialog
+      v-model:visible="modalEdicaoAluno"
+      header="Envio de pontos"
+      :style="{ width: '30rem' }"
+    >
+      <div class="flex flex-col items-center gap-4">
+        <div>{{ alunoSelecionado.nome }}</div>
+        <Knob
+          v-model="formData.valor"
+          :max="usuarioStore.user.saldo"
+          :min="1"
+        />
+        <Button
+          label="Enviar saldo"
+          class="w-fit"
+          text
+          @click="handleEnviarSaldo"
+        />
+      </div>
+      <!-- <pre>
+        {{ alunoSelecionado }}
+      </pre> -->
+    </Dialog>
 
     <!-- <pre>
       {{ alunosData }}

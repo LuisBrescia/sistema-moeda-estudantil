@@ -95,6 +95,9 @@ const itemsSidebar = [
   width: 48px;
   transition: width 0.3s ease-in-out;
   overflow: hidden;
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
 
   &__header {
     @apply flex justify-between px-4 py-2;

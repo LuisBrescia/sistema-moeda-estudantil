@@ -20,7 +20,6 @@ const getMe = async () => {
   historico.value = res.historico;
 };
 
-// formatar 2024-12-06T17:48:26.850701Z para 06/12/2024 às 17:48
 const formatDate = (date) => {
   const d = new Date(date);
   return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()} às ${d.getHours()}:${d.getMinutes()}`;
@@ -72,11 +71,11 @@ onMounted(() => {
         <div class="flex items-center gap-4">
           <IconTrendingUp
             v-if="transacao.tipo === 'entrada'"
-            class="text-green-500"
+            class="text-sky-500 dark:text-sky-400"
           />
           <IconTrendingDown
             v-else-if="transacao.tipo === 'saida'"
-            class="text-red-500"
+            class="text-red-500 dark:text-red-400"
           />
           <span
             class="flex items-center gap-1 text-base font-black text-green-500 dark:text-green-400"

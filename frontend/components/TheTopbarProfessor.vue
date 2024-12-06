@@ -45,7 +45,13 @@ const dialogConfirmarSaida = ref(false);
           :letra="usuarioStore.user.nome[0]"
         />
         <Skeleton v-else shape="circle" size="1.6rem" class="mr-2"></Skeleton>
-        <span class="text-xs">{{ usuarioStore.user.nome }}</span>
+        <span class="mr-2 text-xs">{{ usuarioStore.user.nome }}</span>
+        <span
+          class="flex items-center text-xs font-black text-green-500 dark:text-green-400"
+        >
+          <IconIndianRupee :size="14" />
+          {{ usuarioStore.user.saldo }}
+        </span>
       </div>
       <IconChevronDown
         :size="16"

@@ -28,7 +28,6 @@ class Aluno extends Model
     protected $hidden = [
         'senha',
         'remember_token',
-        'historico',
     ];
 
 
@@ -36,6 +35,7 @@ class Aluno extends Model
     {
         return [
             'senha' => 'hashed',
+            'historico' => 'array',
         ];
     }
 

@@ -19,9 +19,11 @@ export const useUsuarioStore = defineStore('usuarioStore', {
       this._user = user;
     },
     updateSaldo() {
-      console.log('Atualizando saldo');
       const saldo_total = Number(this._user.saldo) + 1000;
       this._user.saldo = saldo_total;
+    },
+    setSaldo(saldo) {
+      this._user.saldo = saldo;
     },
     async login(res) {
       this.setUsuario(res.user);

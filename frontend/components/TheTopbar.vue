@@ -12,7 +12,7 @@ const dialogConfiguracoes = ref(false);
 
 const handleLogout = async () => {
   await usuarioStore.logout();
-  navigateTo('/login');
+  navigateTo('/professor/login');
 };
 
 const dialogConfirmarSaida = ref(false);
@@ -45,7 +45,13 @@ const dialogConfirmarSaida = ref(false);
           :letra="usuarioStore.user.nome[0]"
         />
         <Skeleton v-else shape="circle" size="1.6rem" class="mr-2"></Skeleton>
-        <span class="text-xs">{{ usuarioStore.user.nome }}</span>
+        <span class="mr-2 text-xs">{{ usuarioStore.user.nome }}</span>
+        <span
+          class="flex items-center text-xs font-black text-green-500 dark:text-green-400"
+        >
+          <IconIndianRupee :size="14" />
+          {{ usuarioStore.user.saldo }}
+        </span>
       </div>
       <IconChevronDown
         :size="16"
@@ -81,9 +87,18 @@ const dialogConfirmarSaida = ref(false);
       <div
         class="interativo flex cursor-pointer items-center justify-between px-6 py-3 text-xs"
       >
-        <div class="flex items-center">
-          <IconCircleUserRound :size="16" />
-          <span class="ml-4">Meu perfil</span>
+        <div class="flex w-full items-center justify-between">
+          <span class="flex items-center">
+            <IconCircleUserRound :size="16" />
+            <span class="ml-4">Meu perfil</span>
+          </span>
+
+          <span
+            class="flex items-center gap-1 text-xs font-black text-green-500 dark:text-green-400"
+          >
+            <IconIndianRupee :size="14" />
+            {{ usuarioStore.user.saldo }}
+          </span>
         </div>
       </div>
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Professor;
 use App\Models\Departamento;
+use App\Models\Instituicao;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
@@ -60,5 +62,65 @@ class AlunoController extends Controller
     {
         $aluno->delete();
         return response()->json(null, 204);
+    }
+
+    public function adicionar(Request $request)
+    {
+        $validated = $request->validate([
+            'id' => 'required|exists:alunos,id',
+            'saldo' => 'required|numeric|min:1',
+        ]);
+
+        $validated['id'] = (int) $validated['id'];
+        $validated['saldo'] = (float) $validated['saldo'];
+
+        $professor = $request->user();
+
+        if (!$professor instanceof Professor) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+        if ($professor->saldo < $validated['saldo']) {
+            return response()->json(['message' => 'Saldo insuficiente'], 400);
+        }
+
+        $professor->saldo -= $validated['saldo'];
+        $historicoProfessor = $professor->historico ?? [];
+        $historicoProfessor[] = [
+            'tipo' => 'saida',
+            'valor' => $validated['saldo'],
+            'date' => now(),
+        ];
+        $professor->historico = $historicoProfessor;
+
+        $aluno = Aluno::find($validated['id']);
+        $aluno->saldo += $validated['saldo'];
+        $historicoAluno = $aluno->historico ?? [];
+        $historicoAluno[] = [
+            'tipo' => 'entrada',
+            'valor' => $validated['saldo'],
+            'date' => now(),
+        ];
+        $aluno->historico = $historicoAluno;
+
+        $professor->save();
+        $aluno->save();
+
+        return response()->json($aluno);
+    }
+
+    public function podio()
+    {
+        $alunos = Aluno::all();
+        $alunos = $alunos->sortByDesc('saldo')->values()->take(10)->all();
+
+        // iterar por cada aluno e pegar o nome do departamento e instituicao
+        foreach ($alunos as $aluno) {
+            $insticuicao = Instituicao::find($aluno->instituicao_id);
+            $departamento = Departamento::find($aluno->departamento_id);
+            $aluno->departamento = $departamento->nome;
+            $aluno->instituicao = $insticuicao->nome;
+        }
+
+        return response()->json($alunos);
     }
 }
