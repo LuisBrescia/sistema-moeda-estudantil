@@ -19,9 +19,83 @@ Referente aos labs 3, 4 e 5 de Desenvolvimento de sistemas
 
 <hr>
 
+## Como usar a aplicação
+
+O projeto **AraVault** utiliza Docker, Laravel Sail no backend e PNPM no frontend.
+
+### Backend
+1. Navegue até o diretório `backend`
+
+```bash
+cd backend
+```
+2. Instale as dependências utilizando o Composer com a imagem Docker do Laravel Sail:
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
+
+```
+
+3. Construa a imagem do sail sem cache:
+
+```bash
+   ./vendor/bin/sail build --nocache
+```
+
+4. Inicie os containers em segundo plano:
+```bash
+./vendor/bin/sail up -d
+
+```
+
+5. Execute as migrações e seeders:
+```bash
+./vendor/bin/sail artisan migrate:fresh --seed
+
+```
+
+
+### Frontend
+
+1. Navegue até o diretório `frontend`:
+
+```bash
+cd frontend
+```
+
+2. Instale o PNPM globalmente (caso ainda não tenha):
+
+```bash
+npm i -g pnpm
+
+```
+
+3. Instale as dependências do frontend:
+
+```bash
+pnpm install
+```
+
+4. Inicie o servidor de desenvolvimento:
+
+```bash
+pnpm dev
+
+```
+
+
+<hr>
+
+
 # Definição e implementação da estratégia de acesso ao banco de dados
 
-O sistema **Moeda Estudantil** utiliza o framework Laravel para o desenvolvimento backend, implementando a estratégia de acesso ao banco de dados através do **Eloquent ORM** (object-relational mapping).
+O sistema **AraVault** utiliza o framework Laravel para o desenvolvimento backend, implementando a estratégia de acesso ao banco de dados através do **Eloquent ORM** (object-relational mapping).
+
 
 ## Eloquent Orm
 
