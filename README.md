@@ -37,7 +37,7 @@ O projeto **AraVault** utiliza Docker, Laravel Sail no backend e PNPM no fronten
 cd backend
 ```
 
-2. Instale as dependências utilizando o Composer com a imagem Docker do Laravel Sail:
+2. Instale as dependências do sail utilizando a imagem `laravelsail/php83-composer:latest`:
 
 ```bash
 docker run --rm \
