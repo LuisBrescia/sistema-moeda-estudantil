@@ -1,12 +1,17 @@
-# Moeda Estudantil
+# AraVault
+![Crypto](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHJ3eW9nYmJseHZwdDZyNWtiZXZnN2JrMWttNjM5NHR6eHRmcnk5eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l49JMVDvP8D38LHwI/giphy.webp)
 
-Referente aos labs 3, 4 e 5 de Desenvolvimento de sistemas
+*Referente aos labs 3, 4 e 5 de Desenvolvimento de sistemas*
 
 ## Alunos:
 
 - Luís Felipe Teixeira Dias Brescia
 - Gustavo Pereira de Oliveira
 - Victor Reis Carlota
+
+## Demonstração 📽️:
+![AraVaultVideo](/docs/assets/aravideo.gif)
+
 
 ## Documentação:
 
