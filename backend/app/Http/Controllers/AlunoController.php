@@ -7,6 +7,9 @@ use App\Models\Professor;
 use App\Models\Departamento;
 use App\Models\Instituicao;
 use Illuminate\Http\Request;
+use App\Events\MailerEvent;
+use App\Mail\PontosRecebidos;
+use Illuminate\Support\Facades\Mail;
 
 class AlunoController extends Controller
 {
@@ -108,7 +111,7 @@ class AlunoController extends Controller
         $professor->save();
         $aluno->save();
 
-        // > @VictorReisCarlota: Ação de enviar por email
+        Mail::to($aluno->email)->send(new PontosRecebidos($aluno, $validated['saldo']));
 
         return response()->json($aluno);
     }

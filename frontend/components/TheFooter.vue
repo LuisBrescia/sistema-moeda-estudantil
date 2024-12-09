@@ -6,7 +6,7 @@
       class="container mx-auto flex items-center justify-between py-4 text-sm font-medium text-surface-700 dark:text-surface-300"
     >
       <div class="flex items-center">
-        <span>@ 2024 Syscoin LTDA</span>
+        <span>@ 2024 AraVault LTDA</span>
         <Divider layout="vertical" />
         <span>Todos os direitos reservados.</span>
       </div>

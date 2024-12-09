@@ -5,7 +5,7 @@
     <div class="container mx-auto flex justify-between py-2">
       <div class="flex flex-1">
         <span class="my-auto text-2xl font-black tracking-tighter">
-          Syscoin
+          AraVault
         </span>
       </div>
 

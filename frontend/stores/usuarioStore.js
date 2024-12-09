@@ -1,10 +1,8 @@
 import { defineStore } from 'pinia';
-import { useUnidadeStore } from '@/stores/unidadeStore';
-import { useToast } from 'primevue/usetoast';
 
 export const useUsuarioStore = defineStore('usuarioStore', {
   state: () => ({
-    _user: {},
+    _user: { name: '', saldo: 0, id: 0 },
     _token: null,
   }),
   getters: {
@@ -32,9 +30,33 @@ export const useUsuarioStore = defineStore('usuarioStore', {
     async logout({ forced } = { forced: false }) {
       this._token = null;
       this._user = {};
+      
+      return navigateTo('/home');  
+    },
+    async enviarEmailRecebimentoPontos(alunoId, quantidade) {
+      try {
+        const response = await fetch(`/api/notify-email`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this._token}`,
+          },
+          body: JSON.stringify({
+            aluno_id: alunoId,
+            quantidade,
+          }),
+        });
 
-      return navigateTo('/home');
-      // > TODO aqui devera enviar uma requisição para o servidor para invalidar o token @VictorReisCarlota
+        const data = await response.json();
+
+        if (response.ok) {
+          console.log(data.message); 
+        } else {
+          console.error(data.error); 
+        }
+      } catch (error) {
+        console.error('Erro ao enviar e-mail de notificação:', error);
+      }
     },
   },
   persist: true,

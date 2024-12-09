@@ -8,7 +8,7 @@ definePageMeta({
 <template>
   <p class="mb-8 text-sm text-surface-700 dark:text-surface-0/70">
     Esse acesso é utilizado para criar e configurar todos os seus serviços no
-    Syscoin. Se está precisando utilizar a ferramenta operacional do Syscoin
+    AraVault. Se está precisando utilizar a ferramenta operacional do AraVault
     para inserir ou organizar reservas e fila de espera, deverá utilizar o
     <span class="font-semibold">Painel Operacional.</span>
     Entre os recursos disponíveis nesse painel estão:

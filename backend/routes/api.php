@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TransacaoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NotificationController;
 
 use App\Models\Departamento;
 
@@ -14,6 +15,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('login/professor', [AuthController::class, 'loginProfessor']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/notify-email', [NotificationController::class, 'sendEmailNotification']);
 
 Route::get('instituicoes/all', [\App\Http\Controllers\InstituicaoController::class, 'all']);
 
