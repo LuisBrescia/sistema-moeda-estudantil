@@ -52,7 +52,7 @@
             padding: 30px;
             border-radius: 8px 8px 0 0;
             text-align: center;
-            background-image: url('https://via.placeholder.com/600x100/FFB6C1/000000?text=Logo+Aqui');
+            background-image: url('https://giphy.com/gifs/lazy-corgi-1oBwBVLGoLteCP2kyD');
             background-size: cover;
             background-position: center;
         }
@@ -107,7 +107,7 @@
 <body>
     <div class="email-wrapper">
         <div class="email-container">
-            <div class="email-header" style="background-color: #f7a7a0; color: #ffffff; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; background-image: url('https://via.placeholder.com/600x100/FFB6C1/000000?text=Logo+Aqui'); background-size: cover; background-position: center;">
+            <div class="email-header" style="background-color: #f7a7a0; color: #ffffff; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; background-image: url('https://giphy.com/gifs/lazy-corgi-1oBwBVLGoLteCP2kyD'); background-size: cover; background-position: center;">
                 <h1>Pontos Recebidos</h1>
             </div>
             <div class="email-body" style="padding: 30px; color: #555555; font-size: 16px; line-height: 1.5;">
