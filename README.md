@@ -22,6 +22,8 @@ _Referente aos labs 3, 4 e 5 de Desenvolvimento de sistemas_
 - [Diagrama de componentes](docs/diagrama_componentes.md)
 - [Diagrama de sequência](docs/diagrama_sequencia.md)
 - [Diagrama Entidade-Relacionamento](docs/diagrama_er.md)
+- [Diagrama de comunicação](docs/diagrama_comms.md)
+
 
 <hr>
 
