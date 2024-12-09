@@ -1,7 +1,8 @@
 # AraVault
+
 ![Crypto](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHJ3eW9nYmJseHZwdDZyNWtiZXZnN2JrMWttNjM5NHR6eHRmcnk5eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l49JMVDvP8D38LHwI/giphy.webp)
 
-*Referente aos labs 3, 4 e 5 de Desenvolvimento de sistemas*
+_Referente aos labs 3, 4 e 5 de Desenvolvimento de sistemas_
 
 ## Alunos:
 
@@ -10,8 +11,8 @@
 - Victor Reis Carlota
 
 ## Demonstração 📽️:
-![AraVaultVideo](/docs/assets/aravideo.gif)
 
+![AraVaultVideo](/docs/assets/aravideo.gif)
 
 ## Documentação:
 
@@ -29,11 +30,13 @@
 O projeto **AraVault** utiliza Docker, Laravel Sail no backend e PNPM no frontend.
 
 ### Backend
+
 1. Navegue até o diretório `backend`
 
 ```bash
 cd backend
 ```
+
 2. Instale as dependências utilizando o Composer com a imagem Docker do Laravel Sail:
 
 ```bash
@@ -53,17 +56,18 @@ docker run --rm \
 ```
 
 4. Inicie os containers em segundo plano:
+
 ```bash
 ./vendor/bin/sail up -d
 
 ```
 
 5. Execute as migrações e seeders:
+
 ```bash
 ./vendor/bin/sail artisan migrate:fresh --seed
 
 ```
-
 
 ### Frontend
 
@@ -93,14 +97,11 @@ pnpm dev
 
 ```
 
-
 <hr>
-
 
 # Definição e implementação da estratégia de acesso ao banco de dados
 
 O sistema **AraVault** utiliza o framework Laravel para o desenvolvimento backend, implementando a estratégia de acesso ao banco de dados através do **Eloquent ORM** (object-relational mapping).
-
 
 ## Eloquent Orm
 
