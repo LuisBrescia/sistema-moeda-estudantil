@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pontos Recebidos</title>
     <style>
-        body, table, td, a {
+        body,
+        table,
+        td,
+        a {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
@@ -104,12 +108,14 @@
         }
     </style>
 </head>
+
 <body>
     <div class="email-wrapper">
         <div class="email-container">
-            <div class="email-header" style="background-color: #f7a7a0; color: #ffffff; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; background-image: url('https://giphy.com/gifs/lazy-corgi-1oBwBVLGoLteCP2kyD'); background-size: cover; background-position: center;">
+            <div class="email-header" style="background-color: #ffa94d; color: #ffffff; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; background-image: url('https://giphy.com/gifs/lazy-corgi-1oBwBVLGoLteCP2kyD'); background-size: cover; background-position: center;">
                 <h1>Pontos Recebidos</h1>
             </div>
+
             <div class="email-body" style="padding: 30px; color: #555555; font-size: 16px; line-height: 1.5;">
                 <p>Olá, {{ $aluno->nome }}!</p>
                 <p>Você recebeu <strong>{{ $quantidade }} pontos</strong> recentemente. Agora, seu saldo de pontos é de <strong>{{ $aluno->saldo }} pontos</strong>.</p>
@@ -124,4 +130,5 @@
         </div>
     </div>
 </body>
+
 </html>
