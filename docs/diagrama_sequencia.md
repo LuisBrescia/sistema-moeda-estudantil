@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
     %% Envio de Moedas
     participant Professor
