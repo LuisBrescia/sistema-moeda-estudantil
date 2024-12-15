@@ -54,7 +54,7 @@ docker run --rm \
 3. Construa a imagem do sail sem cache:
 
 ```bash
-   ./vendor/bin/sail build --nocache
+   ./vendor/bin/sail build --no-cache
 ```
 
 4. Inicie os containers em segundo plano:
